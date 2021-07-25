@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="iChave.View.Configuration.AboutView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fontawesome="clr-namespace:FontAwesome">
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout IsVisible="{Binding HasInitialized}">
+                <FlexLayout
+                    Padding="20,0"
+                    AlignItems="Center"
+                    HeightRequest="60">
+                    <FlexLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding PrivacyCommand}" />
+                    </FlexLayout.GestureRecognizers>
+                    <Label Style="{StaticResource DefaultItem}" Text="Política de privacidade" />
+                    <Image Source="{StaticResource ChevronRightImage}" />
+                </FlexLayout>
+                <BoxView Style="{StaticResource SeparatorItem}" />
+
+                <FlexLayout
+                    Padding="20,0"
+                    AlignItems="Center"
+                    HeightRequest="60">
+                    <FlexLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding TermsUseCommand}" />
+                    </FlexLayout.GestureRecognizers>
+                    <Label Style="{StaticResource DefaultItem}" Text="Termos de uso" />
+                    <Image Source="{StaticResource ChevronRightImage}" />
+                </FlexLayout>
+                <BoxView Style="{StaticResource SeparatorItem}" />
+
+                <FlexLayout
+                    Padding="20,0"
+                    AlignItems="Center"
+                    HeightRequest="60">
+                    <Label
+                        Style="{StaticResource DefaultItem}"
+                        Text="{Binding Version}"
+                        TextColor="Gray" />
+                </FlexLayout>
+                <BoxView Style="{StaticResource SeparatorItem}" />
+
+            </StackLayout>
+            <ActivityIndicator />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="iChave.View.Configuration.ConfigView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fontawesome="clr-namespace:FontAwesome">
+
+    <ContentPage.IconImageSource>
+        <FontImageSource
+            FontFamily="FontAwesomeSolid"
+            Glyph="{x:Static fontawesome:FontAwesomeIcons.UserCog}"
+            Color="Black" />
+    </ContentPage.IconImageSource>
+
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout IsVisible="{Binding HasInitialized}">
+                <FlexLayout
+                    Padding="20,0"
+                    AlignItems="Center"
+                    HeightRequest="60">
+                    <FlexLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ProfileCommand}" />
+                    </FlexLayout.GestureRecognizers>
+                    <Image Source="{StaticResource UserImage}" />
+                    <Label Style="{StaticResource DefaultItem}" Text="Perfil" />
+                    <Image Source="{StaticResource ChevronRightImage}" />
+                </FlexLayout>
+                <BoxView Style="{StaticResource SeparatorItem}" />
+
+                <FlexLayout
+                    Padding="20,0"
+                    AlignItems="Center"
+                    HeightRequest="60">
+                    <FlexLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding AddressCommand}" />
+                    </FlexLayout.GestureRecognizers>
+                    <Image Source="{StaticResource MapMarkedImage}" />
+                    <Label Style="{StaticResource DefaultItem}" Text="Endereço" />
+                    <Image Source="{StaticResource ChevronRightImage}" />
+                </FlexLayout>
+                <BoxView Style="{StaticResource SeparatorItem}" />
+
+                <FlexLayout
+                    Padding="20,0"
+                    AlignItems="Center"
+                    HeightRequest="60">
+                    <FlexLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding AboutCommand}" />
+                    </FlexLayout.GestureRecognizers>
+
+                    <Image Source="{StaticResource InfoCircleImage}" />
+                    <Label Style="{StaticResource DefaultItem}" Text="Sobre" />
+                    <Image Source="{StaticResource ChevronRightImage}" />
+                </FlexLayout>
+                <BoxView Style="{StaticResource SeparatorItem}" />
+
+                <Button
+                    Margin="20"
+                    BackgroundColor="Red"
+                    Command="{Binding LogoutCommand}"
+                    HeightRequest="60"
+                    Text="LOGOUT"
+                    VerticalOptions="EndAndExpand" />
+            </StackLayout>
+            <ActivityIndicator />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

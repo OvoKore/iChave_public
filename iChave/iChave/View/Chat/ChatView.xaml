@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="iChave.View.Chat.ChatView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="{Binding Title}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding ShowCommand}" IconImageSource="{StaticResource UserImage}" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout Padding="10" IsVisible="{Binding HasInitialized}">
+                <ScrollView>
+                    <CollectionView
+                        x:Name="collectionView"
+                        EmptyView="Sem mensagem"
+                        ItemsSource="{Binding Chats}"
+                        SelectedItem="{Binding SelectedChat, Mode=TwoWay}"
+                        VerticalOptions="FillAndExpand">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout ItemSpacing="20" Orientation="Vertical" />
+                        </CollectionView.ItemsLayout>
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <SwipeView>
+                                    <Frame BackgroundColor="White">
+
+                                        <StackLayout BackgroundColor="White">
+                                            <Grid Grid.Row="0" BackgroundColor="White">
+                                                <Label
+                                                    Grid.Column="0"
+                                                    Padding="10,0"
+                                                    FontSize="Small"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    Text="{Binding Email}" />
+                                                <Label
+                                                    Grid.Column="1"
+                                                    Padding="10,0"
+                                                    FontSize="Small"
+                                                    HorizontalOptions="End"
+                                                    Text="{Binding Time}" />
+                                            </Grid>
+
+                                            <BoxView Grid.Row="1" Style="{StaticResource SeparatorItem}" />
+
+                                            <Label
+                                                Grid.Row="2"
+                                                Padding="10"
+                                                FontSize="Medium"
+                                                HorizontalOptions="End"
+                                                Text="{Binding Message}" />
+                                        </StackLayout>
+
+                                    </Frame>
+                                </SwipeView>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+
+                    </CollectionView>
+                </ScrollView>
+
+                <Grid HeightRequest="60">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="0.2*" />
+                    </Grid.ColumnDefinitions>
+                    <Entry
+                        Grid.Column="0"
+                        HorizontalOptions="FillAndExpand"
+                        Placeholder="Digite sua mensagem aqui."
+                        Text="{Binding Text}" />
+                    <Button
+                        Grid.Column="1"
+                        BackgroundColor="CadetBlue"
+                        Command="{Binding SendMsgCommand}"
+                        ImageSource="{StaticResource PaperPlaneImage}" />
+                </Grid>
+            </StackLayout>
+
+            <ActivityIndicator />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

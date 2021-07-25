@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="iChave.View.Configuration.ProfileUserView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviorPack="clr-namespace:Xamarin.Forms.BehaviorValidationPack;assembly=Xamarin.Forms.BehaviorValidationPack">
+    <ContentPage.Content>
+        <Grid>
+            <ScrollView IsVisible="{Binding HasInitialized}">
+                <StackLayout Padding="10">
+                    <Grid Margin="0,20,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Label
+                            Grid.Row="0"
+                            FontSize="Title"
+                            Text="Nome" />
+                        <Entry Grid.Row="1" Text="{Binding Name}" />
+
+                        <Label
+                            Grid.Row="2"
+                            FontSize="Title"
+                            Text="Sexo" />
+                        <Picker
+                            Grid.Row="3"
+                            ItemsSource="{Binding SexList}"
+                            SelectedItem="{Binding Sex}" />
+
+                        <Label
+                            Grid.Row="4"
+                            FontSize="Title"
+                            Text="Data de Nascimento" />
+                        <DatePicker Grid.Row="5" Date="{Binding Birthdate}" />
+
+                        <Label
+                            Grid.Row="6"
+                            FontSize="Title"
+                            Text="CPF" />
+                        <Entry
+                            Grid.Row="7"
+                            IsEnabled="False"
+                            IsReadOnly="True"
+                            Keyboard="Numeric"
+                            Placeholder="CPF"
+                            Text="{Binding Cpf}">
+                            <Entry.Behaviors>
+                                <behaviorPack:CPFValidationBehavior />
+                                <behaviorPack:MaskedBehavior Mask="XXX.XXX.XXX-XX" />
+                            </Entry.Behaviors>
+                        </Entry>
+
+                        <Label
+                            Grid.Row="8"
+                            FontSize="Title"
+                            Text="Email" />
+                        <Entry
+                            Grid.Row="9"
+                            IsEnabled="False"
+                            IsReadOnly="True"
+                            Text="{Binding Email}">
+                            <Entry.Behaviors>
+                                <behaviorPack:EmailValidationBehavior />
+                            </Entry.Behaviors>
+                        </Entry>
+
+                        <Label
+                            Grid.Row="10"
+                            FontSize="Title"
+                            Text="Telefone" />
+                        <Entry
+                            Grid.Row="11"
+                            IsEnabled="False"
+                            IsReadOnly="True"
+                            Keyboard="Numeric"
+                            Placeholder="Phone"
+                            Text="{Binding Phone}">
+                            <Entry.Behaviors>
+                                <behaviorPack:MaskedBehavior Mask="(XX)XXXXX-XXXX" />
+                            </Entry.Behaviors>
+                        </Entry>
+                    </Grid>
+
+                    <Button
+                        BackgroundColor="Green"
+                        Command="{Binding UpdateCommand}"
+                        Text="Salvar"
+                        VerticalOptions="EndAndExpand" />
+
+                </StackLayout>
+            </ScrollView>
+            <ActivityIndicator />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

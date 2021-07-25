@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="iChave.View.List.ListLocksmithView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fontawesome="clr-namespace:FontAwesome">
+
+    <ContentPage.IconImageSource>
+        <FontImageSource
+            FontFamily="FontAwesomeSolid"
+            Glyph="{x:Static fontawesome:FontAwesomeIcons.Key}"
+            Color="Black" />
+    </ContentPage.IconImageSource>
+
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout Padding="10" IsVisible="{Binding HasInitialized}">
+                <RefreshView Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}">
+                    <CollectionView
+                        x:Name="collectionView"
+                        EmptyView=""
+                        ItemsSource="{Binding Locksmiths}"
+                        SelectedItem="{Binding SelectedLocksmith, Mode=OneWayToSource}"
+                        SelectionChangedCommand="{Binding EditServiceCommand}"
+                        SelectionChangedCommandParameter="{Binding SelectedLocksmith}"
+                        SelectionMode="Single"
+                        VerticalOptions="FillAndExpand">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout ItemSpacing="20" Orientation="Vertical" />
+                        </CollectionView.ItemsLayout>
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <SwipeView>
+                                    <Frame BackgroundColor="White">
+
+                                        <Grid BackgroundColor="White" HorizontalOptions="FillAndExpand">
+
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="25" />
+                                                <RowDefinition Height="2" />
+                                                <RowDefinition Height="25" />
+                                                <RowDefinition Height="25" />
+                                                <RowDefinition Height="25" />
+                                            </Grid.RowDefinitions>
+
+                                            <Label Grid.Row="0" Text="{Binding company_name}" />
+
+                                            <BoxView Grid.Row="1" Style="{StaticResource SeparatorItem}" />
+
+                                            <Label
+                                                Grid.Row="2"
+                                                HorizontalOptions="Start"
+                                                Text="{Binding cidade}" />
+
+                                            <Label
+                                                Grid.Row="3"
+                                                HorizontalOptions="Start"
+                                                Text="{Binding bairro}" />
+
+                                            <Label
+                                                Grid.Row="4"
+                                                HorizontalOptions="Start"
+                                                Text="{Binding logradouro}" />
+
+                                            <Grid Grid.Row="5" BackgroundColor="White">
+                                                <Label Grid.Column="0" Text="{Binding numero}" />
+                                                <Label Grid.Column="1" Text="{Binding complemento}" />
+                                            </Grid>
+
+                                        </Grid>
+
+                                    </Frame>
+                                </SwipeView>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </RefreshView>
+            </StackLayout>
+
+            <ActivityIndicator />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

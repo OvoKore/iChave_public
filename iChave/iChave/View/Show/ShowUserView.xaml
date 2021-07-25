@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="iChave.View.Show.ShowUserView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="{Binding Title}">
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout IsVisible="{Binding HasInitialized}">
+                <Frame BackgroundColor="AliceBlue">
+                    <Grid BackgroundColor="AliceBlue" HorizontalOptions="FillAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25" />
+                            <RowDefinition Height="2" />
+                            <RowDefinition Height="25" />
+                            <RowDefinition Height="25" />
+                            <RowDefinition Height="25" />
+                            <RowDefinition Height="25" />
+                        </Grid.RowDefinitions>
+
+                        <Label
+                            Grid.Row="0"
+                            HorizontalOptions="CenterAndExpand"
+                            Text="{Binding Name}" />
+
+                        <BoxView Grid.Row="1" Style="{StaticResource SeparatorItem}" />
+                        <Label
+                            Grid.Row="2"
+                            HorizontalOptions="Start"
+                            Text="{Binding Cidade}" />
+                        <Label
+                            Grid.Row="3"
+                            HorizontalOptions="Start"
+                            Text="{Binding Bairro}" />
+                        <Label
+                            Grid.Row="4"
+                            HorizontalOptions="Start"
+                            Text="{Binding Logradouro}" />
+
+                        <Grid Grid.Row="5" BackgroundColor="AliceBlue">
+                            <Label Grid.Column="0" Text="{Binding Numero}" />
+                            <Label Grid.Column="1" Text="{Binding Complemento}" />
+                        </Grid>
+                    </Grid>
+                </Frame>
+            </StackLayout>
+            <ActivityIndicator />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

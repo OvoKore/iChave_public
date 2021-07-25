@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="iChave.View.Configuration.AddressView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviorPack="clr-namespace:Xamarin.Forms.BehaviorValidationPack;assembly=Xamarin.Forms.BehaviorValidationPack">
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout Padding="10" IsVisible="{Binding HasInitialized}">
+                <ScrollView>
+                    <Grid VerticalOptions="StartAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="60" />
+                            <RowDefinition Height="20" />
+                            <RowDefinition Height="60" />
+                            <RowDefinition Height="60" />
+                            <RowDefinition Height="60" />
+                            <RowDefinition Height="60" />
+                            <RowDefinition Height="60" />
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Entry
+                                Grid.Column="0"
+                                Keyboard="Numeric"
+                                Placeholder="CEP*"
+                                Text="{Binding Cep}">
+                                <Entry.Behaviors>
+                                    <behaviorPack:CEPValidationBehavior />
+                                    <behaviorPack:MaskedBehavior Mask="XXXXX-XXX" />
+                                </Entry.Behaviors>
+                            </Entry>
+                            <Button
+                                Grid.Column="1"
+                                Margin="0,10,0,0"
+                                BackgroundColor="Green"
+                                Command="{Binding ConsultarCepCommand}"
+                                Text="Consultar" />
+                        </Grid>
+
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Column="0" Text="Estado" />
+                            <Label Grid.Column="1" Text="Cidade" />
+                        </Grid>
+
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Picker
+                                Title="Estado"
+                                Grid.Column="0"
+                                IsEnabled="{Binding EnderecoHabilitado}"
+                                ItemDisplayBinding="{Binding StateAbbreviation}"
+                                ItemsSource="{Binding AllEstados}"
+                                SelectedItem="{Binding State}" />
+                            <Picker
+                                Title="Cidade"
+                                Grid.Column="1"
+                                IsEnabled="{Binding EnderecoHabilitado}"
+                                ItemDisplayBinding="{Binding Name}"
+                                ItemsSource="{Binding ListCidade}"
+                                SelectedItem="{Binding City}" />
+                        </Grid>
+
+                        <Entry
+                            Grid.Row="3"
+                            IsEnabled="{Binding EnderecoHabilitado}"
+                            Placeholder="Bairro*"
+                            Text="{Binding Bairro}" />
+
+                        <Entry
+                            Grid.Row="4"
+                            Placeholder="Logradouro*"
+                            Text="{Binding Logradouro}" />
+
+                        <Entry
+                            Grid.Row="5"
+                            Keyboard="Numeric"
+                            Placeholder="Número*"
+                            Text="{Binding Numero}" />
+
+                        <Entry
+                            Grid.Row="6"
+                            Placeholder="Complemento"
+                            Text="{Binding Complemento}" />
+                    </Grid>
+                </ScrollView>
+                <Button
+                    Grid.Row="8"
+                    BackgroundColor="Green"
+                    Command="{Binding RegisterCommand}"
+                    Text="Salvar"
+                    VerticalOptions="EndAndExpand" />
+            </StackLayout>
+            <ActivityIndicator />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

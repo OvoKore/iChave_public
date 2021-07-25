@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="iChave.View.Show.ShowLocksmithView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="{Binding Title}">
+
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout Padding="10" IsVisible="{Binding HasInitialized}">
+
+                <Frame BackgroundColor="AliceBlue">
+                    <Grid BackgroundColor="AliceBlue" HorizontalOptions="FillAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25" />
+                            <RowDefinition Height="2" />
+                            <RowDefinition Height="25" />
+                            <RowDefinition Height="25" />
+                            <RowDefinition Height="25" />
+                            <RowDefinition Height="25" />
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0" BackgroundColor="AliceBlue">
+                            <Label
+                                Grid.Column="0"
+                                HorizontalOptions="CenterAndExpand"
+                                Text="{Binding CompanyName}" />
+                            <Button
+                                Grid.Column="1"
+                                BackgroundColor="Transparent"
+                                Command="{Binding ChatCommand}"
+                                HorizontalOptions="End"
+                                ImageSource="{StaticResource CommentDotsImage}" />
+                        </Grid>
+
+                        <BoxView Grid.Row="1" Style="{StaticResource SeparatorItem}" />
+                        <Label
+                            Grid.Row="2"
+                            HorizontalOptions="Start"
+                            Text="{Binding Cidade}" />
+                        <Label
+                            Grid.Row="3"
+                            HorizontalOptions="Start"
+                            Text="{Binding Bairro}" />
+                        <Label
+                            Grid.Row="4"
+                            HorizontalOptions="Start"
+                            Text="{Binding Logradouro}" />
+
+                        <Grid Grid.Row="5" BackgroundColor="AliceBlue">
+                            <Label Grid.Column="0" Text="{Binding Numero}" />
+                            <Label Grid.Column="1" Text="{Binding Complemento}" />
+                        </Grid>
+                    </Grid>
+                </Frame>
+
+                <BoxView HeightRequest="3" Style="{StaticResource SeparatorItem}" />
+
+                <RefreshView Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}">
+                    <CollectionView
+                        x:Name="collectionView"
+                        EmptyView=""
+                        ItemsSource="{Binding Services}"
+                        SelectedItem="{Binding SelectedService, Mode=OneWayToSource}"
+                        SelectionChangedCommand="{Binding ShowFeedbackCommand}"
+                        SelectionChangedCommandParameter="{Binding SelectedService}"
+                        SelectionMode="Single"
+                        VerticalOptions="FillAndExpand">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout ItemSpacing="20" Orientation="Vertical" />
+                        </CollectionView.ItemsLayout>
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <SwipeView>
+
+                                    <Frame>
+                                        <Grid BackgroundColor="White" HorizontalOptions="FillAndExpand">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="20" />
+                                                <RowDefinition Height="2" />
+                                                <RowDefinition Height="*" />
+                                                <RowDefinition Height="1" />
+                                                <RowDefinition Height="20" />
+                                            </Grid.RowDefinitions>
+
+                                            <Grid Grid.Row="0" BackgroundColor="White">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="1*" />
+                                                    <ColumnDefinition Width="99*" />
+                                                </Grid.ColumnDefinitions>
+                                                <Label
+                                                    Grid.Column="1"
+                                                    FontAttributes="Bold"
+                                                    HorizontalOptions="Start"
+                                                    Text="{Binding name}" />
+                                            </Grid>
+
+                                            <BoxView Grid.Row="1" Style="{StaticResource SeparatorItem}" />
+                                            <Label
+                                                Grid.Row="2"
+                                                HorizontalOptions="Start"
+                                                Text="{Binding description}" />
+
+                                            <BoxView Grid.Row="3" Style="{StaticResource SeparatorItem}" />
+
+                                            <Grid Grid.Row="4" BackgroundColor="White">
+                                                <Label Grid.Column="0" Text="{Binding low_price, StringFormat='Min: R${0}'}" />
+                                                <Label Grid.Column="1" Text="{Binding high_price, StringFormat='Max: R${0}'}" />
+                                            </Grid>
+                                        </Grid>
+                                    </Frame>
+
+                                </SwipeView>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </RefreshView>
+            </StackLayout>
+
+            <ActivityIndicator />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

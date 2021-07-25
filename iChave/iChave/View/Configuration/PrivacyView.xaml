@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="iChave.View.Configuration.PrivacyView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout BackgroundColor="White" IsVisible="{Binding HasInitialized}">
+                <Label
+                    BackgroundColor="#E1E8E6"
+                    FontSize="Title"
+                    HorizontalTextAlignment="Center"
+                    Text="O aplicativo iChave foi desenvolvido para a conclusão da matéria 'Projeto Final II', do curso de Sistemas de Informação pela Unilasalle. Não tem, portanto, quaisquer responsabilidades pelos dados registrados pela aplicação."
+                    VerticalOptions="FillAndExpand"
+                    VerticalTextAlignment="Center" />
+            </StackLayout>
+            <ActivityIndicator />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

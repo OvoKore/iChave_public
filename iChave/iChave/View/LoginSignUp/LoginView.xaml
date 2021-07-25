@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="iChave.View.LoginSignUp.LoginView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviorPack="clr-namespace:Xamarin.Forms.BehaviorValidationPack;assembly=Xamarin.Forms.BehaviorValidationPack">
+    <ContentPage.Content>
+        <Grid>
+            <Grid Padding="20" IsVisible="{Binding HasInitialized}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="200" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="55" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+
+                <Frame
+                    Padding="15"
+                    BackgroundColor="White"
+                    CornerRadius="90"
+                    HeightRequest="150"
+                    HorizontalOptions="Center">
+                    <Image Grid.Row="0" Source="icon.png" Margin="{OnPlatform iOS=15}"/>
+                </Frame>
+
+                <Entry
+                    x:Name="email"
+                    Grid.Row="1"
+                    Placeholder="Email"
+                    Text="{Binding Email}">
+                    <Entry.Behaviors>
+                        <behaviorPack:EmailValidationBehavior />
+                    </Entry.Behaviors>
+                </Entry>
+
+                <Entry
+                    Grid.Row="2"
+                    IsPassword="True"
+                    Placeholder="Senha"
+                    Text="{Binding Password}" />
+
+                <Button
+                    Grid.Row="3"
+                    BackgroundColor="Green"
+                    Command="{Binding LoginCommand}"
+                    Text="Login" />
+
+                <Label
+                    Grid.Row="4"
+                    Padding="0,10"
+                    Text="Esqueceu a senha? Clique Aqui!">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ForgetPasswordCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
+
+                <Label Grid.Row="5" Text="Não tem conta? Inscreva-se!" />
+
+                <Grid
+                    Grid.Row="6"
+                    Padding="0"
+                    BackgroundColor="Transparent">
+                    <Button
+                        Grid.Column="0"
+                        BackgroundColor="Red"
+                        Command="{Binding SignUpUserCommand}"
+                        Text="Cliente"
+                        VerticalOptions="End" />
+
+                    <Button
+                        Grid.Column="1"
+                        BackgroundColor="Red"
+                        Command="{Binding SignUpLocksmithCommand}"
+                        Text="Chaveiro"
+                        VerticalOptions="End" />
+                </Grid>
+
+            </Grid>
+            <ActivityIndicator />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

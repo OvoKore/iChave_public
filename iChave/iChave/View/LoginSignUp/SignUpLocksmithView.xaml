@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="iChave.View.LoginSignUp.SignUpLocksmithView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviorPack="clr-namespace:Xamarin.Forms.BehaviorValidationPack;assembly=Xamarin.Forms.BehaviorValidationPack">
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout Padding="10" IsVisible="{Binding HasInitialized}">
+                <ScrollView VerticalOptions="StartAndExpand">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="70" />
+                            <RowDefinition Height="70" />
+                            <RowDefinition Height="70" />
+                            <RowDefinition Height="70" />
+                            <RowDefinition Height="70" />
+                            <RowDefinition Height="70" />
+                            <RowDefinition Height="70" />
+                            <RowDefinition Height="70" />
+                        </Grid.RowDefinitions>
+
+                        <Entry
+                            Grid.Row="0"
+                            Placeholder="Nome da Empresa*"
+                            Text="{Binding CompanyName}" />
+
+                        <Entry
+                            Grid.Row="1"
+                            Placeholder="Inscrição Estadual"
+                            Text="{Binding StateRegistration}" />
+
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Entry
+                                Grid.Column="0"
+                                Keyboard="Numeric"
+                                Placeholder="CNPJ*"
+                                Text="{Binding Cnpj}">
+                                <Entry.Behaviors>
+                                    <behaviorPack:CNPJValidationBehavior />
+                                    <behaviorPack:MaskedBehavior Mask="XX.XXX.XXX/XXXX-XX" />
+                                </Entry.Behaviors>
+                            </Entry>
+                            <Entry
+                                Grid.Column="1"
+                                Keyboard="Numeric"
+                                Placeholder="Telefone*"
+                                Text="{Binding Phone}">
+                                <Entry.Behaviors>
+                                    <behaviorPack:MaskedBehavior Mask="(XX)XXXXX-XXXX" />
+                                </Entry.Behaviors>
+                            </Entry>
+                        </Grid>
+
+                        <Entry
+                            x:Name="email"
+                            Grid.Row="3"
+                            Placeholder="Email*"
+                            Text="{Binding Email}">
+                            <Entry.Behaviors>
+                                <behaviorPack:EmailValidationBehavior />
+                            </Entry.Behaviors>
+                        </Entry>
+                        <Entry
+                            Grid.Row="4"
+                            Placeholder="Confirmar Email*"
+                            Text="{Binding ConfirmEmail}">
+                            <Entry.Behaviors>
+                                <behaviorPack:EmailValidationBehavior />
+                                <behaviorPack:CompareValidationBehavior BindingContext="{x:Reference email}" Text="{Binding Text}" />
+                            </Entry.Behaviors>
+                        </Entry>
+
+                        <Entry
+                            x:Name="password"
+                            Grid.Row="5"
+                            IsPassword="True"
+                            Placeholder="Senha*"
+                            Text="{Binding Password}">
+                            <Entry.Behaviors>
+                                <behaviorPack:PasswordValidationBehavior />
+                            </Entry.Behaviors>
+                        </Entry>
+                        <Entry
+                            Grid.Row="6"
+                            IsPassword="True"
+                            Placeholder="Confirmar Senha*"
+                            Text="{Binding ConfirmPassword}">
+                            <Entry.Behaviors>
+                                <behaviorPack:PasswordValidationBehavior />
+                                <behaviorPack:CompareValidationBehavior BindingContext="{x:Reference password}" Text="{Binding Text}" />
+                            </Entry.Behaviors>
+                        </Entry>
+                    </Grid>
+                </ScrollView>
+                <Button
+                    Grid.Row="7"
+                    Margin="0,0,0,20"
+                    BackgroundColor="Green"
+                    Command="{Binding RegisterCommand}"
+                    Text="Sign Up!"
+                    VerticalOptions="End" />
+            </StackLayout>
+            <ActivityIndicator />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

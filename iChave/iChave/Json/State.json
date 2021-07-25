@@ -1,0 +1,137 @@
+﻿[
+  {
+    "ID": "1",
+    "StateAbbreviation": "AC",
+    "Name": "Acre"
+  },
+  {
+    "ID": "2",
+    "StateAbbreviation": "AL",
+    "Name": "Alagoas"
+  },
+  {
+    "ID": "3",
+    "StateAbbreviation": "AM",
+    "Name": "Amazonas"
+  },
+  {
+    "ID": "4",
+    "StateAbbreviation": "AP",
+    "Name": "Amapá"
+  },
+  {
+    "ID": "5",
+    "StateAbbreviation": "BA",
+    "Name": "Bahia"
+  },
+  {
+    "ID": "6",
+    "StateAbbreviation": "CE",
+    "Name": "Ceará"
+  },
+  {
+    "ID": "7",
+    "StateAbbreviation": "DF",
+    "Name": "Distrito Federal"
+  },
+  {
+    "ID": "8",
+    "StateAbbreviation": "ES",
+    "Name": "Espírito Santo"
+  },
+  {
+    "ID": "9",
+    "StateAbbreviation": "GO",
+    "Name": "Goiás"
+  },
+  {
+    "ID": "10",
+    "StateAbbreviation": "MA",
+    "Name": "Maranhão"
+  },
+  {
+    "ID": "11",
+    "StateAbbreviation": "MG",
+    "Name": "Minas Gerais"
+  },
+  {
+    "ID": "12",
+    "StateAbbreviation": "MS",
+    "Name": "Mato Grosso do Sul"
+  },
+  {
+    "ID": "13",
+    "StateAbbreviation": "MT",
+    "Name": "Mato Grosso"
+  },
+  {
+    "ID": "14",
+    "StateAbbreviation": "PA",
+    "Name": "Pará"
+  },
+  {
+    "ID": "15",
+    "StateAbbreviation": "PB",
+    "Name": "Paraíba"
+  },
+  {
+    "ID": "16",
+    "StateAbbreviation": "PE",
+    "Name": "Pernambuco"
+  },
+  {
+    "ID": "17",
+    "StateAbbreviation": "PI",
+    "Name": "Piauí"
+  },
+  {
+    "ID": "18",
+    "StateAbbreviation": "PR",
+    "Name": "Paraná"
+  },
+  {
+    "ID": "19",
+    "StateAbbreviation": "RJ",
+    "Name": "Rio de Janeiro"
+  },
+  {
+    "ID": "20",
+    "StateAbbreviation": "RN",
+    "Name": "Rio Grande do Norte"
+  },
+  {
+    "ID": "21",
+    "StateAbbreviation": "RO",
+    "Name": "Rondônia"
+  },
+  {
+    "ID": "22",
+    "StateAbbreviation": "RR",
+    "Name": "Roraima"
+  },
+  {
+    "ID": "23",
+    "StateAbbreviation": "RS",
+    "Name": "Rio Grande do Sul"
+  },
+  {
+    "ID": "24",
+    "StateAbbreviation": "SC",
+    "Name": "Santa Catarina"
+  },
+  {
+    "ID": "25",
+    "StateAbbreviation": "SE",
+    "Name": "Sergipe"
+  },
+  {
+    "ID": "26",
+    "StateAbbreviation": "SP",
+    "Name": "São Paulo"
+  },
+  {
+    "ID": "27",
+    "StateAbbreviation": "TO",
+    "Name": "Tocantins"
+  }
+]
